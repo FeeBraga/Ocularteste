@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#103d5d">
+  <title>Minha Voz — comunicação pelo olhar</title>
+  <link rel="stylesheet" href="https://eyegestures.com/eyegestures.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main id="app">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">COMUNICAÇÃO ACESSÍVEL</p>
+        <h1>Minha Voz</h1>
+      </div>
+      <div class="top-actions">
+        <button class="utility" id="gazeScrollUp" type="button" aria-label="Rolar para cima">↑ Subir</button>
+        <button class="utility" id="gazeScrollDown" type="button" aria-label="Rolar para baixo">↓ Descer</button>
+      </div>
+    </header>
+
+    <section class="composer" aria-labelledby="phrase-title">
+      <div class="composer-heading">
+        <div>
+          <p class="eyebrow">SUA MENSAGEM</p>
+          <h2 id="phrase-title" aria-live="polite">Toque ou olhe para as palavras</h2>
+        </div>
+        <span class="word-count" id="wordCount">0 palavras</span>
+      </div>
+      <div class="phrase" id="phrase" aria-label="Palavras selecionadas"></div>
+      <div class="composer-actions">
+        <button class="action primary" id="speakButton" type="button" aria-label="Falar mensagem">🔊 Falar</button>
+        <button class="action" id="backspaceButton" type="button" aria-label="Apagar última palavra">⌫ Apagar</button>
+        <button class="action" id="clearButton" type="button" aria-label="Limpar mensagem">Limpar</button>
+      </div>
+      <p id="announcement" class="sr-only" aria-live="assertive"></p>
+    </section>
+
+    <nav class="categories" aria-label="Categorias de palavras" id="categories"></nav>
+    <section class="board" aria-label="Palavras disponíveis">
+      <div class="board-heading">
+        <h2 id="categoryTitle">Palavras úteis</h2>
+        <p>Escolha uma palavra para montar sua mensagem</p>
+      </div>
+      <div class="word-grid" id="wordGrid"></div>
+    </section>
+
+    <footer class="footer">
+      <span class="connection-dot" aria-hidden="true"></span>
+      <span id="helpText">Use os cartões por toque ou pelo olhar.</span>
+      <button id="gazeToggle" class="gaze-toggle" type="button" aria-pressed="false">Ativar controle pelo olhar</button>
+    </footer>
+  </main>
+
+  <video id="video" autoplay muted playsinline aria-hidden="true"></video>
+  <div id="gazeDock" aria-live="polite">
+    <span id="status">Toque ou clique para usar. O controle ocular é opcional.</span>
+    <span id="error" role="alert"></span>
+  </div>
+  <script src="https://eyegestures.com/eyegestures.js"></script>
+  <script src="app.js" defer></script>
+  <script src="script.js" defer></script>
+</body>
+</html>

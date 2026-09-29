@@ -1,0 +1,67 @@
+:root {
+  color-scheme: light;
+  --navy: #103d5d;
+  --blue: #176b87;
+  --pale: #eaf5f8;
+  --gold: #f4c542;
+  --ink: #142d3c;
+  --muted: #526a78;
+  --white: #fff;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: #f3f8fa; color: var(--ink); font: 18px/1.45 Arial, sans-serif; }
+button { font: inherit; }
+#app { width: min(1180px, 100%); margin: auto; padding: 22px clamp(14px, 3vw, 34px) 140px; }
+.topbar, .composer-heading, .composer-actions, .footer, .board-heading { display: flex; align-items: center; justify-content: space-between; gap: 14px; }
+.topbar { margin-bottom: 20px; }
+h1, h2, p { margin: 0; }
+h1 { font-size: clamp(28px, 4vw, 40px); color: var(--navy); }
+h2 { font-size: clamp(21px, 3vw, 28px); }
+.eyebrow { color: var(--blue); font-size: 12px; font-weight: 800; letter-spacing: .12em; }
+.top-actions { display: flex; gap: 8px; }
+.utility, .action, .category, .word-card, .gaze-toggle { border: 3px solid transparent; border-radius: 14px; cursor: pointer; font-weight: 750; transition: transform .12s, background .12s; }
+button:hover { transform: translateY(-1px); }
+button:focus-visible { outline: 4px solid var(--gold); outline-offset: 3px; }
+.utility { min-height: 48px; padding: 8px 12px; background: var(--white); color: var(--navy); }
+.composer { padding: clamp(16px, 3vw, 26px); border: 2px solid #c5dce5; border-radius: 22px; background: var(--white); box-shadow: 0 8px 24px #103d5d12; }
+.composer-heading h2 { max-width: 720px; margin-top: 4px; }
+.word-count { flex: 0 0 auto; padding: 7px 11px; border-radius: 99px; background: var(--pale); color: var(--navy); font-size: 14px; font-weight: 700; }
+.phrase { display: flex; min-height: 66px; flex-wrap: wrap; align-items: center; gap: 8px; margin: 14px 0; padding: 10px; border: 2px dashed #b4ced9; border-radius: 14px; }
+.phrase:empty::before { content: "Sua frase aparecerá aqui"; color: #718793; }
+.phrase-word { padding: 7px 11px; border-radius: 10px; background: #eaf5f8; color: var(--navy); font-weight: 700; }
+.composer-actions { justify-content: flex-start; flex-wrap: wrap; }
+.action { min-height: 52px; padding: 9px 17px; background: #edf3f5; color: var(--navy); }
+.action.primary { background: var(--navy); color: var(--white); }
+.categories { display: flex; gap: 9px; overflow-x: auto; padding: 22px 2px 12px; scrollbar-width: thin; }
+.category { flex: 0 0 auto; min-height: 52px; padding: 9px 16px; background: var(--white); color: var(--navy); border-color: #d4e3e9; }
+.category[aria-pressed="true"] { background: var(--navy); color: var(--white); border-color: var(--navy); }
+.board { padding: 8px 0; }
+.board-heading { justify-content: flex-start; flex-wrap: wrap; margin: 4px 0 14px; }
+.board-heading h2 { color: var(--navy); }
+.board-heading p { color: var(--muted); }
+.word-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 190px), 1fr)); gap: 12px; }
+.word-card { display: flex; min-height: 108px; flex-direction: column; align-items: flex-start; justify-content: center; gap: 7px; padding: 15px; border-color: #d4e3e9; background: var(--white); color: var(--ink); text-align: left; box-shadow: 0 3px 9px #103d5d0b; }
+.word-card:hover { border-color: var(--blue); background: #f5fbfd; }
+.word-card .symbol { font-size: 28px; }
+.word-card .label { font-size: 20px; font-weight: 750; }
+.footer { position: fixed; z-index: 10; right: 0; bottom: 0; left: 0; min-height: 66px; padding: 10px max(16px, calc((100vw - 1110px)/2)); border-top: 1px solid #c7dce4; background: #ffffffed; color: var(--muted); font-size: 14px; backdrop-filter: blur(10px); }
+.connection-dot { width: 11px; height: 11px; flex: 0 0 auto; border-radius: 50%; background: #50a777; }
+.footer #helpText { flex: 1; }
+.gaze-toggle { min-height: 44px; padding: 8px 13px; background: var(--navy); color: var(--white); font-size: 14px; }
+#video { position: fixed; width: 1px; height: 1px; right: 0; bottom: 0; opacity: 0; pointer-events: none; }
+#gazeDock { display: none; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; }
+@media (max-width: 600px) {
+  body { font-size: 16px; }
+  #app { padding-top: 14px; }
+  .topbar { align-items: flex-start; }
+  .top-actions { flex-direction: column; }
+  .utility { min-height: 40px; padding: 5px 8px; font-size: 14px; }
+  .composer-heading { align-items: flex-start; flex-direction: column; gap: 8px; }
+  .word-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+  .word-card { min-height: 91px; padding: 10px; }
+  .word-card .label { font-size: 17px; }
+  .footer { flex-wrap: wrap; gap: 7px; font-size: 12px; }
+  .gaze-toggle { font-size: 12px; }
+}
